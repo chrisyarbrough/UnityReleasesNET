@@ -22,7 +22,6 @@ Additionally, versions older than a certain date can be filtered out.
 
 - .NET 8.0 Target Framework (runtime to run the tool, sdk to build from source)
 
----
 
 ## Usage
 
