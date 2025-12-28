@@ -18,6 +18,10 @@ https://services.docs.unity.com/release/v1/
 
 Additionally, versions older than a certain date can be filtered out.
 
+## Static Lookup File
+
+See [build/UnityReleases.txt](build/UnityReleases.txt) for the output of all Unity releases built on a schedule.
+
 ## Prerequisites
 
 - .NET 8.0 Target Framework (runtime to run the tool, sdk to build from source)
