@@ -1,7 +1,4 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
-name: .NET Build and Update File
+name: Build and Update File
 
 on:
   workflow_dispatch:
@@ -18,7 +15,6 @@ jobs:
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        fetch-depth: 0
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
@@ -35,7 +31,7 @@ jobs:
       run: |
         mkdir -p build
         touch build/UnityVersions.txt
-        dotnet run --no-build -- --since-date 2025-11-11 | tee build/UnityVersions.txt
+        dotnet run --no-build | tee build/UnityVersions.txt
         echo "OUTPUT_FILE=build/UnityVersions.txt" >> $GITHUB_OUTPUT
 
     - name: Check for changes
