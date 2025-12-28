@@ -2,6 +2,8 @@ name: Build and Update File
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 22 * * SUN'
 
 jobs:
   build-and-update:
