@@ -1,5 +1,16 @@
 # UnityReleasesNET
 
+This project can tell you which versions (and revision hashes) of the Unity editor have been released.
+
+
+## Static Lookup File
+
+See [build/UnityReleases.txt](build/UnityReleases.txt) for the output of all Unity releases.
+The file is updated on a schedule, currently, once a week.
+
+
+## CLI Tool
+
 A C# client for the Unity services API to fetch all editor release versions of Unity.
 
 This tool prints the release versions and revision hashes by release date in descending order.
@@ -18,16 +29,13 @@ https://services.docs.unity.com/release/v1/
 
 Additionally, versions older than a certain date can be filtered out.
 
-## Static Lookup File
 
-See [build/UnityReleases.txt](build/UnityReleases.txt) for the output of all Unity releases built on a schedule.
-
-## Prerequisites
+### Prerequisites
 
 - .NET 8.0 Target Framework (runtime to run the tool, sdk to build from source)
 
 
-## Usage
+### Usage
 
 Invoke the help to see all options:
 
@@ -56,7 +64,7 @@ Only show LTS and TECH stream versions:
 Only show versions released since a date:
 
 ```shell
-./UnityReleases --since-date 2024-12-01
+./UnityReleases --since-date 2025-12-01
 ```
 
 The date parsing can include a time but needs to be one of the standard formats supported by .NET `DateTime.Parse`.
@@ -72,6 +80,7 @@ Combined example:
 ./UnityReleases -l 15 -s LTS TECH -p MAC_OS -a ARM64 -d 2022-12-01
 ```
 
+
 ## Development
 
 Remember to separate the options from the `dotnet run` command:
@@ -80,6 +89,7 @@ Remember to separate the options from the `dotnet run` command:
 cd UnityReleases
 dotnet run -- --help
 ```
+
 
 ### Publishing
 
