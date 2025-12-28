@@ -32,8 +32,8 @@ jobs:
     - name: Run
       run: |
         mkdir -p build
-        touch build/UnityVersions.txt
-        dotnet run --no-build | tee build/UnityVersions.txt
+        touch build/UnityReleases.txt
+        dotnet run --no-build | tee build/UnityReleases.txt
         echo "OUTPUT_FILE=build/UnityVersions.txt" >> $GITHUB_OUTPUT
 
     - name: Check for changes
@@ -52,5 +52,5 @@ jobs:
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add build/UnityVersions.txt
-        git commit -m "🤖 Update UnityVersions.txt via GitHub Actions - $(date +'%Y-%m-%d %H:%M UTC')"
+        git commit -m "🤖 Update UnityReleases.txt via GitHub Actions - $(date +'%Y-%m-%d %H:%M UTC')"
         git push
