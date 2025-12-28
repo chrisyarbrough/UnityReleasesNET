@@ -7,12 +7,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-update:
 
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
@@ -28,7 +35,7 @@ jobs:
       run: |
         mkdir -p build
         touch build/UnityVersions.txt
-        dotnet run --no-build | tee build/UnityVersions.txt
+        dotnet run --no-build -- --since-date 2025-11-11 | tee build/UnityVersions.txt
         echo "OUTPUT_FILE=build/UnityVersions.txt" >> $GITHUB_OUTPUT
 
     - name: Check for changes
